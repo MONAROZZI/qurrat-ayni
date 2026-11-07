@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#879b86"><title>قُرّة عيني | رحلة تعارف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script defer src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<div class="shell">
+<header class="top"><div class="brand">✿ قُرّة عيني <small>رحلة تعارف على مهل</small></div><span class="pill" id="connection">♡ وضع فردي</span></header>
+<section class="hero"><div class="eyebrow">BETTER TOGETHER · بِمَوَدَّةٍ وَرَحْمَة</div><h1>كل سؤال… <em>خطوة أقرب</em> ♡</h1><p>مساحة لطيفة وصادقة لتكتشفوا القيم والأحلام والتفاصيل الصغيرة. مش امتحان توافق، بل بداية حوار.</p></section>
+<section class="panel" id="setup">
+<div class="sectionhead"><h2>كيف بتحبّوا تلعبوا؟</h2><span>01 / البداية</span></div>
+<div class="modebar"><button id="soloBtn" class="mode active">☕ لحالي</button><button id="hostBtn" class="mode">✦ أنشئ غرفة</button><button id="joinBtn" class="mode">♡ انضم لغرفة</button></div>
+<div id="roomControls" hidden><label for="roomCode">رمز الغرفة (6 أحرف أو أرقام)</label><div class="inline"><input id="roomCode" maxlength="6" autocomplete="off" placeholder="مثال: A7K2Q9" dir="ltr"><button id="roomAction" class="primary">إنشاء</button></div><p class="hint" id="roomHint">شاركي الرمز فقط مع الشخص اللي بدك تلعبي معه.</p></div>
+<p class="status" id="status" aria-live="polite">اختاري قسم وابدئي براحتك.</p>
+</section>
+<section class="panel">
+<div class="sectionhead"><h2>اختاروا موضوع الليلة</h2><span>02 / الأقسام</span></div>
+<div class="categories" id="categories"></div>
+<div class="toolbar"><label>عمق الأسئلة <select id="level"><option value="all">كل المستويات</option><option value="light">خفيف</option><option value="deep">عميق</option></select></label><span id="counter"></span></div>
+<div class="question-card" id="questionCard"><div class="cardtop"><span id="catLabel"></span><span id="levelLabel"></span></div><div class="ornament">❀</div><h3 id="questionText"></h3><p id="questionTip" class="tip" hidden></p></div>
+<div class="actions"><button id="tipBtn" class="secondary">✧ فكرة للنقاش</button><button id="nextBtn" class="primary">السؤال التالي ←</button></div>
+</section>
+<section class="panel" id="answerPanel"><div class="sectionhead"><h2>جاوبوا على راحتكم</h2><span>03 / الحوار</span></div><p class="hint">كل شخص يكتب جوابه، وبعدين بتكشفوا الإجابات. ممكن تتجاوزوا أي سؤال بدون تبرير.</p>
+<textarea id="answer" rows="4" placeholder="اكتبي أو اكتب جوابك هون…"></textarea>
+<div class="actions"><button class="secondary" id="saveBtn">حفظ جوابي ♡</button><button class="secondary" id="revealBtn">إظهار الإجابات</button></div>
+<div id="answers" class="answers" hidden></div>
+</section>
+<footer>قُرّة عيني ♡ · الإصغاء أهم من الإجابة المثالية <p>النسخة التجريبية: الإجابات لا تُحفظ على خادم. لا تشاركوا بيانات حساسة.</p></footer>
+</div>
+</body></html>
