@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="https://unpkg.com/peerjs@1.5.5/dist/peerjs.min.js"></script>
+<script defer src="questions-extra.js"></script>
 <script defer src="app.js"></script>
 </head>
 <body>
@@ -22,15 +23,22 @@
 <section class="panel">
 <div class="sectionhead"><h2>اختاروا موضوع الليلة</h2><span>02 / الأقسام</span></div>
 <div class="categories" id="categories"></div>
-<div class="toolbar"><label>عمق الأسئلة <select id="level"><option value="all">كل المستويات</option><option value="light">خفيف</option><option value="deep">عميق</option></select></label><span id="counter"></span></div>
+<div class="gamebar"><label for="gameType">نوع اللعبة</label><select id="gameType"><option value="talk">💌 صراحة وجواب</option><option value="guess">🧠 خمن جوابي</option><option value="choice">⚖️ اتفقنا أو اختلفنا</option><option value="scenario">🎭 ماذا لو؟</option><option value="princess">👑 Bare Minimum / Princess Treatment</option></select><button class="secondary" id="randomBtn">🎲 سؤال عشوائي</button></div><div class="toolbar"><label>عمق الأسئلة <select id="level"><option value="all">كل المستويات</option><option value="light">خفيف</option><option value="deep">عميق</option><option value="critical">مصيري</option></select></label><span id="counter"></span></div>
 <div class="question-card" id="questionCard"><div class="cardtop"><span id="catLabel"></span><span id="levelLabel"></span></div><div class="ornament">❀</div><h3 id="questionText"></h3><p id="questionTip" class="tip" hidden></p></div>
 <div class="actions"><button id="tipBtn" class="secondary">✧ فكرة للنقاش</button><button id="nextBtn" class="primary">السؤال التالي ←</button></div>
 </section>
-<section class="panel" id="answerPanel"><div class="sectionhead"><h2>جاوبوا على راحتكم</h2><span>03 / الحوار</span></div><p class="hint">كل شخص يكتب جوابه، وبعدين بتكشفوا الإجابات. ممكن تتجاوزوا أي سؤال بدون تبرير.</p>
+<section class="panel" id="answerPanel"><div class="sectionhead"><h2>جاوبوا على راحتكم</h2><span>03 / الحوار</span></div><p class="hint" id="answerInstructions">كل شخص يكتب جوابه، وبعدين بتكشفوا الإجابات. ممكن تتجاوزوا أي سؤال بدون تبرير.</p><div id="guessBox" hidden><label for="guessAnswer">توقّعي شو رح يجاوب الطرف الثاني</label><textarea id="guessAnswer" rows="2" placeholder="توقعي…"></textarea></div>
 <textarea id="answer" rows="4" placeholder="اكتبي أو اكتب جوابك هون…"></textarea>
 <div class="actions"><button class="secondary" id="saveBtn">حفظ جوابي ♡</button><button class="secondary" id="revealBtn">إظهار الإجابات</button></div>
 <div id="answers" class="answers" hidden></div>
+<div id="matchPanel" class="match-panel" hidden>
+  <p class="hint">بعد ما تقرؤوا الإجابتين، كل واحد يختار رأيه بصراحة. ما في صح أو غلط بالأسئلة الشخصية ♡</p>
+  <div class="actions"><button class="secondary" id="matchYes">💚 إجاباتنا متشابهة</button><button class="secondary" id="matchNo">🌷 إجاباتنا مختلفة</button></div>
+  <p class="status" id="voteStatus" aria-live="polite"></p>
+  <div id="celebration" class="celebration" hidden aria-live="polite"><div class="confetti" aria-hidden="true">✦ 🌿 ✧ 💚 ✦ 🌼 ✧</div><div class="big-heart">💚</div><h3 id="celebrateTitle"></h3><p id="celebrateText"></p></div>
+</div>
 </section>
+<section class="panel" id="compassPanel"><div class="sectionhead"><h2>🧭 بوصلة التوافق</h2><span>04 / اكتشاف بعض</span></div><p class="hint">بتحسب فقط الأسئلة اللي قيّمتوها سوا بعد الكشف. النسبة هي نسبة الأسئلة المصنّفة «متشابهة» من الأسئلة المُقيّمة، مش نسبة نجاح العلاقة.</p><div class="compass-summary"><div><strong id="matchCount">0</strong><small>لحظات اتفاق</small></div><div><strong id="diffCount">0</strong><small>نقاط للنقاش</small></div><div><strong id="reviewCount">0</strong><small>أسئلة تم تقييمها</small></div></div><div id="compassRows" class="compass-rows"></div><div class="actions"><button id="resetCompass" class="secondary">بدء بوصلة جديدة</button></div><p class="hint">البوصلة مؤقتة بهذه الجلسة فقط، ولا تُحفظ تلقائيًا.</p></section>
 <footer>قُرّة عيني ♡ · الإصغاء أهم من الإجابة المثالية <p>النسخة التجريبية: الإجابات لا تُحفظ على خادم. لا تشاركوا بيانات حساسة.</p></footer>
 </div>
 </body></html>
